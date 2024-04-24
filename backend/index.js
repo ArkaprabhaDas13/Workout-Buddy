@@ -2,12 +2,14 @@ require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 const workoutRoutes = require('./routes/router')
+const cors = require('cors')
 
 const app = express();
+app.use(cors())
 
 app.use(express.json());
 
-app.use('/api/v1', workoutRoutes);
+app.use('/', workoutRoutes);
 
 
 mongoose.connect(process.env.MONGO_URI)
